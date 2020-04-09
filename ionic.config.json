@@ -1,0 +1,7 @@
+{
+  "name": "trixkal6",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
