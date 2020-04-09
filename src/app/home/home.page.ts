@@ -2,6 +2,7 @@ import { CalendarComponent } from 'ionic2-calendar/calendar';
 import { Component, ViewChild, OnInit, Inject, LOCALE_ID } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { formatDate } from '@angular/common';
+import { SchedulerService } from '../services/scheduler.service';
 
 @Component({
   selector: 'app-home',
@@ -31,10 +32,37 @@ export class HomePage implements OnInit {
 
     @ViewChild(CalendarComponent) myCal: CalendarComponent;
 
-    constructor(private alertCtrl: AlertController, @Inject(LOCALE_ID) private locale: string) { }
+    constructor(private alertCtrl: AlertController, @Inject(LOCALE_ID)
+                private locale: string,
+                private schedulerService: SchedulerService) {
+        this.schedulerService.login();
+    }
 
     ngOnInit() {
       this.resetEvent();
+      this.loadDummyEvents();
+    }
+
+    loadDummyEvents() {
+        console.log('loading dummy events');
+        const eventCopy = {
+            title: 'Rocmer Hurtado',
+            startTime:  new Date(this.event.startTime),
+            endTime: new Date(this.event.endTime),
+            allDay: this.event.allDay,
+            desc: 'Barba'
+          };
+          const eventCopy2 = {
+            title: 'Dharma',
+            startTime:  new Date(this.event.startTime),
+            endTime: new Date(this.event.endTime),
+            allDay: this.event.allDay,
+            desc: 'Tinte Cabello'
+          };
+        this.eventSource.push(eventCopy);
+        this.eventSource.push(eventCopy2);
+
+        //this.myCal.loadEvents();
     }
 
     resetEvent() {
