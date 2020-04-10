@@ -41,24 +41,21 @@ export class HomePage implements OnInit {
     }
 
     ngOnInit() {
+
       this.resetEvent();
 
       this.loadEvents();
 
-      // this.eventSource.push(eventCopy3);
     }
 
     loadEvents() {
 
-        this.schedulerService.loadTest()
+        this.schedulerService.loadSchedules()
         .subscribe(resp => {
           console.log(resp);
-          console.log(this.eventSource);
           this.eventSource = resp;
         });
-
-
-        //this.myCal.loadEvents();
+        // this.myCal.loadEvents();
     }
 
     resetEvent() {
@@ -96,56 +93,54 @@ export class HomePage implements OnInit {
 
 
 
-// Change current month/week/day
-next() {
+    // Change current month/week/day
+    next() {
     // tslint:disable-next-line: no-string-literal
-    const swiper = document.querySelector('.swiper-container')['swiper'];
-    swiper.slideNext();
-  }
+        const swiper = document.querySelector('.swiper-container')['swiper'];
+        swiper.slideNext();
+    }
 
-  back() {
-    // tslint:disable-next-line: no-string-literal
-    const swiper = document.querySelector('.swiper-container')['swiper'];
-    swiper.slidePrev();
-  }
+    back() {
+        // tslint:disable-next-line: no-string-literal
+        const swiper = document.querySelector('.swiper-container')['swiper'];
+        swiper.slidePrev();
+    }
 
-  // Change between month/week/day
-  changeMode(mode) {
-    this.calendar.mode = mode;
-  }
+      // Change between month/week/day
+      changeMode(mode) {
+        this.calendar.mode = mode;
+      }
 
-  // Focus today
-  today() {
-    this.calendar.currentDate = new Date();
-  }
+      // Focus today
+      today() {
+        this.calendar.currentDate = new Date();
+      }
 
-  // Selected date reange and hence title changed
-  onViewTitleChanged(title) {
-    this.viewTitle = title;
-  }
+      // Selected date reange and hence title changed
+      onViewTitleChanged(title) {
+        this.viewTitle = title;
+      }
 
-  // Calendar event was clicked
-  async onEventSelected(event) {
-    // Use Angular date pipe for conversion
-    const start = formatDate(event.startTime, 'medium', this.locale);
-    const end = formatDate(event.endTime, 'medium', this.locale);
+      // Calendar event was clicked
+      async onEventSelected(event) {
+        // Use Angular date pipe for conversion
+        const start = formatDate(event.startTime, 'medium', this.locale);
+        const end = formatDate(event.endTime, 'medium', this.locale);
+        const alert = await this.alertCtrl.create({
+          header: event.title,
+          subHeader: event.desc,
+          message: 'From: ' + start + '<br><br>To: ' + end,
+          buttons: ['OK']
+        });
+        alert.present();
+      }
 
-
-    const alert = await this.alertCtrl.create({
-      header: event.title,
-      subHeader: event.desc,
-      message: 'From: ' + start + '<br><br>To: ' + end,
-      buttons: ['OK']
-    });
-    alert.present();
-  }
-
-  // Time slot was clicked
-  onTimeSelected(ev) {
-    const selected = new Date(ev.selectedTime);
-    this.event.startTime = selected.toISOString();
-    selected.setHours(selected.getHours() + 1);
-    this.event.endTime = (selected.toISOString());
-  }
+      // Time slot was clicked
+      onTimeSelected(ev) {
+        const selected = new Date(ev.selectedTime);
+        this.event.startTime = selected.toISOString();
+        selected.setHours(selected.getHours() + 1);
+        this.event.endTime = (selected.toISOString());
+      }
 
   }

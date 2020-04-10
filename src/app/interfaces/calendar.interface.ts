@@ -3,6 +3,7 @@ export interface Calendar {
     title: string;
     startTime: any;
     endTime: any;
+    allDay: boolean;
     // uid?: string;
     // status?: string;
 

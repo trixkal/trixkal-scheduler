@@ -35,7 +35,7 @@ export class SchedulerService {
       resp => {
         this.schedulerData = resp;
         for (const schedule of this.schedulerData) {
-          console.log(schedule.startTime);
+
           const start = schedule.startTime;
           const end = schedule.startTime;
           schedule.startTime = new Date(start._seconds * 1000);
@@ -76,6 +76,7 @@ export class SchedulerService {
       title: 'string',
       startTime: new Date(),
       endTime: new Date(),
+      allDay: false
       // uid: 'string',
       // status: 'string'
     };
