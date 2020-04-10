@@ -1,9 +1,9 @@
 export interface Calendar {
-    name: string;
+    desc: string;
     title: string;
-    startDate: Date;
-    endDate: Date;
-    uid: string;
-    status: string;
+    startTime: any;
+    endTime: any;
+    // uid?: string;
+    // status?: string;
 
 }

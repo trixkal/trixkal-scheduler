@@ -3,6 +3,7 @@ import { Component, ViewChild, OnInit, Inject, LOCALE_ID } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { formatDate } from '@angular/common';
 import { SchedulerService } from '../services/scheduler.service';
+import { Calendar } from '../interfaces/calendar.interface';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,7 @@ import { SchedulerService } from '../services/scheduler.service';
 export class HomePage implements OnInit {
 
     collapseCard = true;
+    schedules: Calendar[] = [];
     event = {
       title: '',
       desc: '',
@@ -35,34 +37,13 @@ export class HomePage implements OnInit {
     constructor(private alertCtrl: AlertController, @Inject(LOCALE_ID)
                 private locale: string,
                 private schedulerService: SchedulerService) {
-        this.schedulerService.login();
+
     }
 
     ngOnInit() {
       this.resetEvent();
-      this.loadDummyEvents();
-    }
 
-    loadDummyEvents() {
-        console.log('loading dummy events');
-        const eventCopy = {
-            title: 'Rocmer Hurtado',
-            startTime:  new Date(this.event.startTime),
-            endTime: new Date(this.event.endTime),
-            allDay: this.event.allDay,
-            desc: 'Barba'
-          };
-          const eventCopy2 = {
-            title: 'Dharma',
-            startTime:  new Date(this.event.startTime),
-            endTime: new Date(this.event.endTime),
-            allDay: this.event.allDay,
-            desc: 'Tinte Cabello'
-          };
-        this.eventSource.push(eventCopy);
-        this.eventSource.push(eventCopy2);
-
-        //this.myCal.loadEvents();
+      // this.eventSource.push(eventCopy3);
     }
 
     resetEvent() {
