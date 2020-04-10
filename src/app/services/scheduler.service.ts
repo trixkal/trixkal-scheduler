@@ -70,19 +70,10 @@ export class SchedulerService {
     );
   }
 
-  addCalendarEvent() {
-    const calendar: Calendar = {
-      desc: 'this.user.name',
-      title: 'string',
-      startTime: new Date(),
-      endTime: new Date(),
-      allDay: false
-      // uid: 'string',
-      // status: 'string'
-    };
-
-    this.items.add(calendar)
-      .then( () => console.log(''))
+  addCalendarEvent(eventCopy) {
+    this.items = this.firestore.collection<Calendar>('calendar');
+    this.items.add(eventCopy)
+      .then( () => console.log('saved!'))
       .catch((err) => console.error('Error al enviar', err));
   }
 

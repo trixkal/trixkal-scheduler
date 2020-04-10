@@ -87,6 +87,7 @@ export class HomePage implements OnInit {
       }
 
       this.eventSource.push(eventCopy);
+      this.schedulerService.addCalendarEvent(eventCopy);
       this.myCal.loadEvents();
       this.resetEvent();
     }

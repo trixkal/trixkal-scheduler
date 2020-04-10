@@ -37,7 +37,7 @@
                 <ion-label>All Day?</ion-label>
                 <ion-checkbox [(ngModel)]="event.allDay"></ion-checkbox>
             </ion-item>
-            <ion-button fill="outline" expand="block" (click)="addEvent()" [disabled]="event.title == ''">Add Event</ion-button>
+            <ion-button fill="solid" expand="block" (click)="addEvent()" [disabled]="event.title == '' && event.desc == ''">Add Event</ion-button>
 
         </ion-card-content>
     </ion-card>
