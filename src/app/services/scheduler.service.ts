@@ -28,7 +28,7 @@ export class SchedulerService {
     }
   }
 
-  loadTest() {
+  loadSchedules() {
     const schedulerDataAux: Calendar[] = [];
     return this.http.get<Calendar[]>(`${environment.url}/schedulerData`)
     .pipe(tap(

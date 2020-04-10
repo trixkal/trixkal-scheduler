@@ -43,7 +43,22 @@ export class HomePage implements OnInit {
     ngOnInit() {
       this.resetEvent();
 
+      this.loadEvents();
+
       // this.eventSource.push(eventCopy3);
+    }
+
+    loadEvents() {
+
+        this.schedulerService.loadTest()
+        .subscribe(resp => {
+          console.log(resp);
+          console.log(this.eventSource);
+          this.eventSource = resp;
+        });
+
+
+        //this.myCal.loadEvents();
     }
 
     resetEvent() {
