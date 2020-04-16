@@ -4,7 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import {NgCalendarModule} from 'ionic2-calendar';
-import { HomePage } from './home.page';
+import { HomePage } from './scheduler.page';
 
 @NgModule({
   imports: [
