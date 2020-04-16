@@ -4,7 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import {NgCalendarModule} from 'ionic2-calendar';
-import { HomePage } from './scheduler.page';
+import { SchedulerPage } from './scheduler.page';
 
 @NgModule({
   imports: [
@@ -15,10 +15,10 @@ import { HomePage } from './scheduler.page';
     RouterModule.forChild([
       {
         path: '',
-        component: HomePage
+        component: SchedulerPage
       }
     ])
   ],
-  declarations: [HomePage]
+  declarations: [SchedulerPage]
 })
-export class HomePageModule {}
+export class SchedulerPageModule {}

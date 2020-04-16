@@ -9,7 +9,7 @@ import { Calendar } from '../interfaces/calendar.interface';
   selector: 'app-home',
   templateUrl: 'scheduler.page.html',
 })
-export class HomePage implements OnInit {
+export class SchedulerPage implements OnInit {
 
     collapseCard = true;
     schedules: Calendar[] = [];
